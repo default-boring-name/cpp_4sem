@@ -1,0 +1,11 @@
+V = VectorElement("Lagrange", triangle, 2)
+Q = FiniteElement("Lagrange", triangle, 1)
+
+p = TrialFunction(Q)
+q = TestFunction(Q)
+
+k = Constant(triangle)
+u1 = Coefficient(V)
+
+a = inner(grad(p), grad(q)) * dx
+L = -(1/k) * div(u1) * q * dx
